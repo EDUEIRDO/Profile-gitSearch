@@ -8,15 +8,24 @@ import { CommonModule } from '@angular/common';
   selector: 'app-root',
   imports: [Request, FormsModule, CommonModule],
   template: `<section>
-    <h1>Github User Search</h1>
-    <input type="text" placeholder="Enter a Github usename..." [(ngModel)]="username">
-    
-    <app-request [searchTerm]="username"></app-request>
+    <h1>{{title}}</h1>
+    <input type="text" placeholder="Search" [(ngModel)]="username">
+    <button (click)="onSearchClick()">Search</button>
+    <hr>
+
+    @if (searchTerm) {
+      <app-request [searchTerm]="searchTerm"></app-request>
+    }
   </section>`,
   styleUrl: './app.css'
 })
 
 export class App {
-  title = 'Github User Search';
+  title = 'Search d_evs';
   username = '';
+  searchTerm = '';
+
+  onSearchClick(): void {
+    this.searchTerm = this.username;
+  }
 }
