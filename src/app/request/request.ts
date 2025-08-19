@@ -1,6 +1,7 @@
 import { Component, OnChanges, OnInit, Input, SimpleChanges } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-request',
@@ -32,8 +33,9 @@ export class Request implements OnChanges {
     this.error = null;
 
     const apiUrl = `https://api.github.com/users/${username}`;
+    const apiKey = environment.apiKey;
     const headers = {
-      Authorization: 'Bearer key'
+      Authorization: `Bearer ${apiKey}`
     };
 
     this.http.get(apiUrl, {headers}).subscribe({
