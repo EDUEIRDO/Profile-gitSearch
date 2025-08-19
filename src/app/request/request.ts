@@ -33,7 +33,7 @@ export class Request implements OnChanges {
 
     const apiUrl = `https://api.github.com/users/${username}`;
     const headers = {
-      Authorization: 'Bearer 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'
+      Authorization: 'Bearer key'
     };
 
     this.http.get(apiUrl, {headers}).subscribe({
