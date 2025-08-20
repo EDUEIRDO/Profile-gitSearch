@@ -1,31 +1,31 @@
-import { Component, OnChanges, OnInit, Input, SimpleChanges } from '@angular/core';
+import { Component, OnChanges, Input, SimpleChanges, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { environment } from '../../environments/environment';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-request',
-  standalone: true,
   imports: [CommonModule],
   templateUrl: './request.html',
   styleUrl: './request.css'
 })
-export class Request implements OnChanges {
 
-  @Input() searchTerm: string | undefined;
+export class Request {
 
   data: any;
   datarepos: any[] = [];
   loading = false;
   error: string | null = null;
 
-  constructor(private http: HttpClient) {}
-  
-
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes['searchTerm'] && this.searchTerm) {
-      this.fetchData(this.searchTerm);
-    }
+  constructor(private route: ActivatedRoute ,private http: HttpClient) {
+    this.route.params.subscribe(params => {
+      const username = params['username'];
+      if (username) {
+        console.log('Fetching data for user:', username);
+        this.fetchData(username); 
+      }
+    });
   }
 
   fetchData(username: string): void {
@@ -38,7 +38,7 @@ export class Request implements OnChanges {
       Authorization: `Bearer ${apiKey}`
     };
 
-    this.http.get(apiUrl, {headers}).subscribe({
+    this.http.get(apiUrl).subscribe({
       next: (response) => {
         this.data = response;
         this.loading = false;

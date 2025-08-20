@@ -1,8 +1,8 @@
-import { ApplicationConfig, Component, signal, input } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component } from '@angular/core';
 import { Request } from './request/request';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-root',
@@ -14,7 +14,11 @@ import { CommonModule } from '@angular/common';
     <hr>
 
     @if (searchTerm) {
-      <app-request [searchTerm]="searchTerm"></app-request>
+      <!-- Here -->
+      <div>
+        <app-request [searchTerm]="searchTerm"></app-request>
+      </div>
+      
     }
   </section>`,
   styleUrl: './app.css'
