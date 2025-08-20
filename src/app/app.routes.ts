@@ -1,9 +1,13 @@
 import { Routes } from '@angular/router';
-import { Request } from './request/request';
+import { Perfil } from './perfil/perfil';
 import { Home } from './home/home';
+import { RenderMode } from '@angular/ssr';
+
 
 export const routes: Routes = [
-    // { path: 'user-detail/:id', component: Request },
     { path: '', component: Home },
-    { path: 'user/:username', component: Request },
+    {
+        path: 'user/:username',
+        component: Perfil,
+    }
 ];

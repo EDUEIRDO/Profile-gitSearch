@@ -1,0 +1,119 @@
+<div class="nav">
+  <h1>
+    <a (click)="homePage()" style="cursor: pointer"
+      ><span style="color: #0069ca">Search </span><span style="color: #8c19d2">d_evs</span></a
+    >
+  </h1>
+  <div class="search-row">
+    <div class="input-icon-wrapper">
+      <span class="search-icon"><mat-icon>search</mat-icon></span>
+      <input class="input-locale" [(ngModel)]="username" placeholder="Search" />
+    </div>
+    <button class="search-btn" (click)="onSearchClick(username)">Buscar</button>
+  </div>
+</div>
+
+<div class="main-container">
+  <div class="content-wrapper">
+    <aside class="profile-column">
+      @if (data) {
+      <div class="profile-card">
+        <img class="avatar" [src]="data.avatar_url" alt="{{ data.login }}" />
+        <div class="profile-info">
+          <h3 class="name">{{ data.name || data.login }}</h3>
+          <p class="username">@{{ data.login }}</p>
+          @if (data.bio) {
+            <p class="bio">{{ data.bio }}</p>
+          }
+          <ul class="counts">
+            <li>
+              <img src="/Group, User.png" class="icon" alt="seguidores" /> {{ data.followers }}
+              seguidores
+            </li>
+            <li>
+              <img src="/heart.png" class="icon" alt="seguindo" /> {{ data.following }} seguindo
+            </li>
+          </ul>
+
+          <ul class="info-list">
+            @if (data.company) {
+            <li>
+              <img src="/building-office-work-square.png" class="icon" alt="empresa" /> {{
+              data.company }}
+            </li>
+            }
+            @if (data.location) {
+            <li>
+              <img src="/Pin, Location.png" class="icon" alt="local" /> {{ data.location }}
+            </li>
+            }
+            @if (data.email && data.blog) {
+            <li>
+              <img src="/email-mail-style-4-big.png" class="icon" alt="email" /> {{ data.email }}
+            </li>
+            <li>
+              <img src="/link-angle-right.png" class="icon" alt="blog" />
+              <a [href]="data.blog" target="_blank" rel="noopener">{{ data.blog }}</a>
+            </li>
+            }
+
+            @if (data.twitter_username) {
+            <li>
+              <img src="/Twitter.png" class="icon" alt="twitter" />
+              <a
+                [href]="'https://twitter.com/'+data.twitter_username"
+                target="_blank"
+                rel="noopener"
+                >@{{ data.twitter_username }}</a
+              >
+            </li>
+            }
+          </ul>
+          <a class="contact-button" [href]="data.html_url" target="_blank" rel="noopener"
+            >Contato</a
+          >
+        </div>
+      </div>
+      }
+    </aside>
+
+    <main class="repos-column">
+      @if (loading) {
+        <div class="status">Carregando...</div>
+      }
+      
+      @if (error){
+        <div class="status error">{{ error }}</div>
+      }
+      
+      @if (datarepos.length) {
+      <div class="repos-list">
+        @for (repo of datarepos; track repo) {
+        <article class="repo-item">
+          @if (repo.stargazers_count >= 1) {
+            <header class="repo-header">
+              <h4 class="repo-title">
+                <a [href]="repo.html_url" target="_blank" rel="noopener">{{ repo.name }}</a>
+              </h4>
+            </header>
+            <p class="repo-desc">{{ repo.description || 'Sem descrição disponível.' }}</p>
+            <footer class="repo-footer">
+              <span class="repo-meta">
+                <img src="/Star.png" class="icon" alt="stars" /> {{ repo.stargazers_count }}
+              </span>
+              <span class="repo-meta updated">Atualizado {{ repo.updated_at | date:'short' }}</span>
+            </footer>
+          } @else() {
+            <div class="no-repos">Nenhum repositório com estrelas encontrado.</div>
+          }
+        </article>
+        }
+      </div>
+      }
+      @if (!loading && !datarepos.length) {
+      <div class="no-repos">Nenhum repositório encontrado.</div>
+      }
+    
+    </main>
+  </div>
+</div>

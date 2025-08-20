@@ -1,60 +1,70 @@
-# Test
+# Profile GitSearch
+Aplicação Angular para buscar perfis e repositórios do GitHub.
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.1.6.
+Resumo:
+- Stack: Angular(client), imagens em `src/assets`,
+- Projeto localizado em `/home/edueirdo/Desktop/Profile-gitSearch`
+- `sourceRoot`: `src` (veja `angular.json`)
 
-## Development server
+Requisitos:
+- Node.js LTS: 18.x, 20.x ou 22.x
+- NPM >= 8
 
-To start a local development server, run:
+Instalar o Node:
+### Windows
+Baixe o instalavel .msi diretamente do site >> [link](https://nodejs.org/en/download) 
 
+### Linux
+Instale o nvm se não tiver
 ```bash
-ng serve
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+# Recarregar o terminal após conclusãoz
+
+nvm install 22
+# Instalar o node
+
+nvm use 22
+# Caso houver alguma outra versão do Node, esse comando fará com que ele use a versão 22
+
+node -v
+# Exibe a versão atual do Node
+
+npm -v
+# Exibe a versão atual do npm
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
+Instalar dependências
 ```bash
-ng generate component component-name
+cd Profile-gitSearch/
+
+npm install -g @angular/cli
+# Comando para instalar o Angular CLI
+
+npm install
+# Execute o comando e aguarde
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
+Executando o projeto
+- Recomendo usar o Angular CLI
 ```bash
-ng generate --help
+ng serve --configuration development --open
+# Ou
+npx ng serve --configuration development --open
+# Uma outra alternativa
+npm start
 ```
 
-## Building
-
-To build the project run:
-
+Fazer build para produção
 ```bash
-ng build
+# build de desenvolvimento
+npx ng build --configuration development
+
+npx http-server ./dist/test -p 8080
+# acessar: http://localhost:8080
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Debug / Problemas comuns
+- 403 da API GitHub → sem autenticação você tem rate-limit.
+- Versão do Node incompatível → troque com nvm para a versão recomendada.
 
-## Running unit tests
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
-# Profile-gitSearch

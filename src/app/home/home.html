@@ -1,8 +1,10 @@
-<p>home works!</p>
-<h1>{{title}}</h1>
-<!-- ...existing code... -->
-<input [(ngModel)]="username" placeholder="Digite o usuário" />
-<!-- ...existing code... -->
-<button (click)="onSearchClick(username)">Buscar</button>
-<!-- ...existing code... -->
-<hr>
+<div class="container">
+    <h1><span style="color: #0069CA;">Search </span><span style="color: #8C19D2;">d_evs</span></h1>
+    <div class="search-row">
+        <div class="input-icon-wrapper">
+            <span class="search-icon"><mat-icon>search</mat-icon></span>
+            <input class="input-locale" [(ngModel)]="username" placeholder="Search" />
+        </div>
+        <button class="search-btn" (click)="onSearchClick(username)">Buscar</button>
+    </div>
+</div>

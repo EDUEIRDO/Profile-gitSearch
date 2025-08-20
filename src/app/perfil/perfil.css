@@ -1,0 +1,330 @@
+:host {
+  display: block;
+}
+
+/* page wrapper */
+.main-container {
+  padding: 40px 24px;
+  background: #fafafa;
+  min-height: calc(100vh - 80px);
+}
+
+/* center content and set columns */
+.content-wrapper {
+  max-width: 1080px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+/* NAV BAR (fixed top) */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 76px;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* center content horizontally */
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
+  z-index: 1200;
+  padding: 0 20px;
+}
+
+/* container inside nav to limit width and align content */
+.nav .search-row,
+.nav h1 {
+  margin: 0;
+}
+
+/* keep nav content the same width as page content */
+.nav .nav-inner {
+  width: 100%;
+  max-width: 1080px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  justify-content: space-between;
+}
+
+/* title styling */
+.nav h1 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #111827;
+}
+
+/* search row in nav */
+.nav .search-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  justify-content: flex-end;
+}
+
+/* input wrapper in nav */
+.nav .input-icon-wrapper {
+  position: relative;
+  flex: 1;
+  max-width: 600px;
+}
+
+/* icon inside nav input */
+.nav .search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #8c19d2;
+  font-size: 18px;
+  pointer-events: none;
+}
+
+/* input in nav */
+.nav .input-locale {
+  padding-left: 40px;
+  width: 100%;
+  height: 44px;
+  border: 1px solid #e5eaf1;
+  border-radius: 8px;
+  font-size: 14px;
+  box-sizing: border-box;
+  background: #fff;
+  outline: none;
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s;
+}
+
+.nav .input-locale:focus {
+  border-color: #8c19d2;
+  box-shadow: 0 2px 8px rgba(140, 25, 210, 0.08);
+}
+
+/* search button in nav */
+.nav .search-btn {
+  background: linear-gradient(180deg, #8c19d2, #7a12ba);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0 20px;
+  height: 44px;
+  font-size: 14px;
+  cursor: pointer;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav .search-btn:hover {
+  filter: brightness(0.95);
+}
+
+/* make room for fixed nav: push page content down */
+.content-wrapper,
+.main-container {
+  /* increase top padding so fixed nav doesn't overlap content */
+  padding-top: 40px; /* main-container already has padding; this is minimal bump */
+}
+
+:host .main-container {
+  margin-top: 76px; /* account for fixed nav height */
+}
+
+/* responsive: stack title and search on small screens */
+@media (max-width: 720px) {
+  .nav .nav-inner {
+    gap: 12px;
+  }
+  .nav h1 {
+    font-size: 18px;
+  }
+  .nav .search-row {
+    justify-content: flex-end;
+  }
+  .nav .input-icon-wrapper {
+    max-width: 320px;
+  }
+  .nav .search-btn {
+    padding: 0 12px;
+    height: 40px;
+  }
+  :host .main-container {
+    margin-top: 72px;
+  }
+}
+
+/* PROFILE (left column) */
+.profile-card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 2px solid #f1f5f9;
+}
+
+.profile-info {
+  flex: 1;
+}
+
+.name {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.username {
+  margin: 2px 0 12px;
+  color: #6b7280;
+  font-size: 13px;
+}
+
+.bio {
+  font-size: 14px;
+  color: #374151;
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+
+/* lists inside profile */
+.counts,
+.info-list {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0;
+}
+
+.counts li,
+.info-list li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #4b5563;
+  font-size: 14px;
+  margin: 6px 0;
+}
+
+/* icons */
+.icon {
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  object-fit: contain;
+}
+
+/* contact button */
+.contact-button {
+  background: linear-gradient(180deg, #8c19d2, #7a12ba);
+  text-decoration: none;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0 20px;
+  height: 44px;
+  font-size: 14px;
+  cursor: pointer;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+/* REPOS (right column) */
+.repos-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.repo-item {
+  background: #fff;
+  border-radius: 6px;
+  padding: 18px 20px;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+  border: 1px solid #f1f5f9;
+}
+
+.repo-title {
+  margin: 0 0 8px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.repo-title a {
+  color: #111827;
+  text-decoration: none;
+}
+
+.repo-desc {
+  margin: 0 0 12px;
+  color: #4b5563;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.repo-footer {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  color: #6b7280;
+  font-size: 13px;
+}
+
+.repo-meta img.icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 6px;
+}
+
+/* status messages */
+.status {
+  color: #374151;
+  margin-bottom: 12px;
+}
+.status.error {
+  color: #b91c1c;
+}
+
+/* responsive: stack columns */
+@media (max-width: 880px) {
+  .content-wrapper {
+    grid-template-columns: 1fr;
+    padding: 0 10px;
+  }
+  .profile-card {
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+  }
+  .profile-info {
+    width: 100%;
+  }
+  .counts,
+  .info-list {
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .contact-button {
+    width: 100%;
+    text-align: center;
+  }
+}
