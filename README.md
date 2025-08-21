@@ -3,7 +3,6 @@ Aplicação Angular para buscar perfis e repositórios do GitHub.
 
 Resumo:
 - Stack: Angular(client), imagens em `src/assets`,
-- Projeto localizado em `/home/edueirdo/Desktop/Profile-gitSearch`
 - `sourceRoot`: `src` (veja `angular.json`)
 
 Requisitos:
@@ -57,9 +56,9 @@ npm start
 Fazer build para produção
 ```bash
 # build de desenvolvimento
-npx ng build --configuration development
+npx ng build --configuration=production
 
-npx http-server ./dist/test -p 8080
+npx http-server ./dist/test/browser -p 8080
 # acessar: http://localhost:8080
 ```
 
