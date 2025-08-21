@@ -1,5 +1,6 @@
 import { RenderMode, ServerRoute } from '@angular/ssr';
 
+// Modificado e já inicializado pois estava dando conflito no build
 export const serverRoutes: ServerRoute[] = [
   {
     path: '**',
