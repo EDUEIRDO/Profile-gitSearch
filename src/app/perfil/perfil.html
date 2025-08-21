@@ -47,13 +47,15 @@
               <img src="/Pin, Location.png" class="icon" alt="local" /> {{ data.location }}
             </li>
             }
-            @if (data.email && data.blog) {
+            @if (data.email) {
             <li>
               <img src="/email-mail-style-4-big.png" class="icon" alt="email" /> {{ data.email }}
             </li>
+            }
+            @if (data.blog) {
             <li>
               <img src="/link-angle-right.png" class="icon" alt="blog" />
-              <a [href]="data.blog" target="_blank" rel="noopener">{{ data.blog }}</a>
+              <a [href]="data.blog" target="_blank" rel="noopener" style="text-decoration: none;">{{ data.blog }}</a>
             </li>
             }
 
@@ -64,6 +66,7 @@
                 [href]="'https://twitter.com/'+data.twitter_username"
                 target="_blank"
                 rel="noopener"
+                style="text-decoration: none;"
                 >@{{ data.twitter_username }}</a
               >
             </li>

@@ -63,7 +63,7 @@ export class Perfil {
     };
 
     // Primeira requisição para os dados do usuário
-    this.http.get(apiUrl, {headers}).subscribe({
+    this.http.get(apiUrl).subscribe({
       next: (response) => {
         this.data = response;
         this.loading = false;
@@ -81,7 +81,7 @@ export class Perfil {
 
     // Segunda requisição para os repositórios do usuário
     const apiUrlRepos = `https://api.github.com/users/${username}/repos`
-    this.http.get<any[]>(apiUrlRepos, { headers }).subscribe({
+    this.http.get<any[]>(apiUrlRepos).subscribe({
       next: (response) => {
         
         // Filtra e ordena repositorios com estrela
