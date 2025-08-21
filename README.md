@@ -37,10 +37,10 @@ Instalar dependências
 cd Profile-gitSearch/
 
 npm install -g @angular/cli
-# Comando para instalar o Angular CLI
+# Instala o Angular CLI globalmente
 
 npm install
-# Execute o comando e aguarde
+# Instala todas as dependências do projeto listadas em package.json
 ```
 
 Executando o projeto
@@ -66,4 +66,7 @@ Debug / Problemas comuns
 - 403 da API GitHub → sem autenticação você tem rate-limit.
 - Versão do Node incompatível → troque com nvm para a versão recomendada.
 
+### Motivação
+
+Este projeto foi desenvolvido com uma abordagem híbrida, combinando o uso de bibliotecas para simplificar tarefas (como a MatIcon) e o desenvolvimento manual para obter um maior controle sobre a aplicação. Embora bibliotecas como o Angular Material tenham sido usadas no início para acelerar o processo, a preferência foi por um desenvolvimento "na mão", acredito que isso torna a aplicação mais única e fortalece o aprendizado.
 
