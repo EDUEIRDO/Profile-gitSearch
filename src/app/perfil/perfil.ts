@@ -53,7 +53,7 @@ export class Perfil {
       Authorization: `Bearer ${apiKey}`
     };
 
-    this.http.get(apiUrl).subscribe({
+    this.http.get(apiUrl, {headers}).subscribe({
       next: (response) => {
         this.data = response;
         this.loading = false;
@@ -70,7 +70,7 @@ export class Perfil {
     });
 
     const apiUrlRepos = `https://api.github.com/users/${username}/repos`
-    this.http.get<any[]>(apiUrlRepos, {headers}).subscribe({
+    this.http.get<any[]>(apiUrlRepos, { headers }).subscribe({
       next: (response) => {
         this.datarepos = response.filter(repo => repo.stargazers_count >= 0).sort((a, b) => b.stargazers_count - a.stargazers_count);
         this.loading = false;
