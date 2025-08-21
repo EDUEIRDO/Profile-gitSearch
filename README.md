@@ -39,6 +39,9 @@ cd Profile-gitSearch/
 npm install -g @angular/cli
 # Instala o Angular CLI globalmente
 
+npm install -g typescript --save-dev
+# Instala o TypeScript globalmente
+
 npm install
 # Instala todas as dependências do projeto listadas em package.json
 ```
